@@ -1,0 +1,320 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Booking System</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!--<link rel="stylesheet" href="css/style.css">-->
+
+</head>
+{% load static %}
+
+<style>
+
+header *{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	height: 100px;
+	width: 100%;
+	position: relative;
+	background-color: white;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.4);
+}
+.timlogo{
+	width: 200px;
+	height: 100px;
+	#align: left;
+	#display: block;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+ .cnt{
+   position: absolute;
+   display: block;
+   top: 27px;
+   left: 600px;
+   color:#800000;
+   font-size:50px;
+   width: 500px;
+	height: 100px;
+   font-family: sans-serif;
+   font-family: 'Oswald', sans-serif;
+}
+.head{
+	position: absolute;
+	top: 35px;
+	right: 50px;
+}
+.head .tile{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	margin-left: 5px;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+.head .media{
+	color: #800000;
+	font-size: 50px;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+	top: -6px;
+}
+header.clicked .head .tile.socialmedia{
+	color: white;
+}
+
+.nav-modal{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	pointer-events: none;
+}
+
+
+html,body{
+background-image: url('/static/au_edit.jpg');
+background-size: 1920px 800px;
+background-color: rgb(128,0,0);
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Oswald', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 420px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgb(128,0,0) !important;
+opacity: 0.8;
+}
+
+.card-header h3{
+color: white;
+text-align:center;
+}
+.tile.socialmedia{
+	color: white;
+	font-size: 50px;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+	top: -6px;
+	left: 170px;
+}
+
+.btn.login_btn{
+color: #800000;
+background-color: white;
+width: 1000px;
+font-weight: bold;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+</style>
+
+
+<!--<link rel="stylesheet" href="{% static '/css/style.css' %}">-->
+<link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+
+<body>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<header>
+	<img  class="timlogo" src="\static\au3.png" alt="AU logo">
+	<div class="cnt">
+		<h1>SLOT BOOKING SYSTEM</h1>
+	</div>
+
+	<div class="head">
+		 <a href='/' class="media"><i class="fa fa-sign-out"></i></a>
+	</div>
+</header>
+
+<div class="container" >
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>DASHBOARD</h3>
+			</div>
+			<div class="card-body">
+				<div class="row">
+                     <a href="{% url 'user_calendar' %}" class="tile socialmedia"><i class="fa fa-calendar"></i></a>
+                    <input value="VIEW CALENDAR" class="btn login_btn">
+					</div>
+                 <br>
+                    <div class="row">
+                         <a href="{% url 'user_room' %}" class="tile socialmedia"><i class="fa fa-ticket"></i></a>
+						<input  value="BOOK A ROOM" class="btn float-right login_btn">
+					</div>
+                <br>
+                    <div class="row">
+                         <a href="{% url 'user_request' %}" class="tile socialmedia"><i class="fa fa-object-group"></i></a>
+						<input  value="VIEW REQUESTS" class="btn float-right login_btn">
+					</div>
+                <br>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+<div class="container">
+     <img  src="\static\au_edit.jpg" alt="AU image" width="1600px" height="700px" >
+    <div class="text-block">
+        <table>
+    <tr>
+        <td>First column</td>
+        <td>Second column</td>
+        <td>Third column</td>
+    </tr>
+    <tr>
+        <td>First column</td>
+        <td>Second column</td>
+        <td>Third column</td>
+    </tr>
+    <tr>
+        <td>First column</td>
+        <td>Second column</td>
+        <td>Third column</td>
+    </tr>
+</table>
+    </div>
+
+</div>
+-->
+
+<!--
+<main>
+<div class="container my-5">
+       <div class="card-body text-center">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+    <div class="card">
+        <button id="add__new__list" type="button" class="btn btn-success position-absolute" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-plus"></i> Add a new List</button>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">List Name</th>
+                <th scope="col">Deadline</th>
+                <th scope="col">Edit List </th>
+                <th scope="col">list info</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="#"><i class="far fa-edit"></i> edit</a>
+                    <a class="btn btn-sm btn-danger" href="#"><i class="fas fa-trash-alt"></i> delete</a>
+                </td>
+                <td><a class="btn btn-sm btn-info" href="#"><i class="fas fa-info-circle"></i> Details</a> </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="#"><i class="far fa-edit"></i> edit</a>
+                    <a class="btn btn-sm btn-danger" href="#"><i class="fas fa-trash-alt"></i> delete</a>
+                </td>
+                <td><a class="btn btn-sm btn-info" href="#"><i class="fas fa-info-circle"></i> Details</a> </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="#"><i class="far fa-edit"></i> edit</a>
+                    <a class="btn btn-sm btn-danger" href="#"><i class="fas fa-trash-alt"></i> delete</a>
+                </td>
+                <td><a class="btn btn-sm btn-info" href="#"><i class="fas fa-info-circle"></i> Details</a> </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+          <div class="card-body text-center">
+            <h4 class="card-title">Special title treatment</h4>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          </div>
+            <div class=" card col-8 offset-2 my-2 p-3">
+          <form>
+            <div class="form-group">
+              <label for="listname">List name</label>
+              <input type="text" class="form-control" name="listname" id="listname" placeholder="Enter your listname">
+            </div>
+            <div class="form-group">
+              <label for="datepicker">Deadline</label>
+              <input  type="text" class="form-control" name="datepicker" id="datepicker" placeholder="Pick up a date">
+            </div>
+            <div class="form-group">
+                                    <label for="datepicker">Add a list item</label>
+                <div class="input-group">
+
+                  <input type="text" class="form-control" placeholder="Add an item" aria-label="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                  </span>
+                </div>
+              </div>
+           <div class="form-group text-center">
+             <button type="submit" class="btn btn-block btn-primary">Sign in</button>
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+-->
+</body>
+
+</html>
+

@@ -1,0 +1,206 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Slot Booking System</title>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      <!--<link rel="stylesheet" href="css/style.css">-->
+
+</head>
+{% load static %}
+
+<style>
+
+header *{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	height: 100px;
+	width: 100%;
+	position: relative;
+	background-color: white;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.4);
+}
+.timlogo{
+	width: 200px;
+	height: 100px;
+	#align: left;
+	#display: block;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+ .cnt{
+   position: absolute;
+   display: block;
+   top: 27px;
+   left: 600px;
+   color:#800000;
+   font-size:50px;
+   width: 500px;
+	height: 100px;
+   font-family: sans-serif;
+   font-family: 'Oswald', sans-serif;
+}
+.head{
+	position: absolute;
+	top: 35px;
+	right: 50px;
+}
+.head .tile{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	margin-left: 5px;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+.head .socialmedia{
+	color: #800000;
+	font-size: 50px;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+	top: -6px;
+}
+header.clicked .head .tile.socialmedia{
+	color: white;
+}
+
+.nav-modal{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	pointer-events: none;
+}
+
+
+html,body{
+
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Oswald', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+table, th, td {
+  border: 2px solid black;
+}
+
+</style>
+
+
+<!--<link rel="stylesheet" href="{% static '/css/style.css' %}">-->
+<link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+
+<body>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<header>
+	<img  class="timlogo" src="\static\au3.png" alt="AU logo">
+	<div class="cnt">
+		<h1>SLOT BOOKING SYSTEM</h1>
+	</div>
+
+	<div class="head">
+         <a href="{% url 'admin_dash' %}" class="tile socialmedia"><i class="fa fa-reply"></i></a>
+		 <a href='/' class="tile socialmedia"><i class="fa fa-sign-out"></i></a>
+	</div>
+</header>
+
+<div class="container" >
+    {% for item1 in rooms%}
+    <h4>ROOM NO --- {{ item1 }}</h4>
+	<table class="table table-hover" style="float:left">
+        <!--<colgroup>
+            {% for slot in slots%}
+            <tr>
+                <td>{{ slot }}</td>
+            </tr>
+            {% endfor %}
+        </colgroup>-->
+    <thead>
+    <tr>
+        <th>slots</th>
+         {% for date in list %}
+        <th>{{ date }}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+        {% for sl in slots %}
+        <tr>
+            <td>{{ sl }}</td>
+
+         {% for dt in list %}
+            <td>
+        {% for item in items %}
+
+
+        {% if item.rRoom == item1 and item.rSlot == sl and item.rDate == dt %}
+
+            <p>{{ item.rEvent}}</p>
+            <p>{{ item.rUser}}</p>
+             <p>{{ item.reqStatus}}</p>
+             <p>{{ item.fbDesc}}</p>
+
+        {% endif %}
+        {% endfor %}
+               </td>
+        {% endfor %}
+
+        </tr>
+        {% endfor %}
+    </tbody>
+   </table>
+    <br>
+   {% endfor %}
+</div>
+
+
+</body>
+
+</html>
+
+<!--  <tbody>
+    {% for item in items %}
+    {% for sl in slots %}
+    {% for dat in dates%}
+    {% if item1 == item.rRoom %}
+
+    <tr>
+        <td>{{ sl }}</td>
+        {% if item.rSlot == sl %}
+        {% if item.rDate == dat %}
+        <td>{{ item.rSlot }}</td>
+        <td>{{ item.reqStatus }}</td>
+        {% endif %}
+        {% endif %}
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+
+    </tbody> -->

@@ -1,0 +1,247 @@
+<!--<h3>LOGIN</h3>-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html>
+<style>
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+html,
+body {
+	background-image: url('/static/au_edit.jpg');
+	background-size: cover;
+	background-color: rgb(128, 0, 0);
+	background-repeat: no-repeat;
+	height: 100%;
+	font-family: 'Oswald', sans-serif;
+}
+
+.container {
+	height: 100%;
+	align-content: center;
+}
+
+.card {
+	height: 530px;
+	margin-top: auto;
+	margin-bottom: auto;
+	width: 400px;
+	background-color: rgb(128, 0, 0) !important;
+	opacity: 0.8;
+}
+
+.social_icon span {
+	font-size: 60px;
+	margin-left: 10px;
+	color: white;
+	<!--maroon -->
+}
+
+.social_icon span:hover {
+	color: white;
+	cursor: pointer;
+}
+
+.card-header h3 {
+	color: white;
+}
+
+.social_icon {
+	position: absolute;
+	right: 20px;
+	top: -45px;
+}
+
+.input-group-prepend span {
+	width: 50px;
+	background-color: white;
+	color: black;
+	border: 0 !important;
+}
+
+input:focus {
+	outline: 0 0 0 0 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+	color: #800000;
+	background-color: white;
+	width: 200px;
+	font-weight: bold;
+}
+
+.login_btn:hover {
+	color: black;
+	background-color: white;
+}
+
+.links {
+	color: white;
+}
+
+.links a {
+	margin-left: 4px;
+}
+
+
+header *{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	height: 100px;
+	width: 100%;
+	position: relative;
+	background-color: white;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.4);
+}
+.timlogo{
+	width: 200px;
+	height: 100px;
+	#align: left;
+	#display: block;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+ .cnt{
+   position: absolute;
+   display: block;
+   top: 27px;
+   left: 600px;
+   color:#800000;
+   font-size:50px;
+   width: 500px;
+	height: 100px;
+   font-family: sans-serif;
+   font-family: 'Oswald', sans-serif;
+}
+.head{
+	position: absolute;
+	top: 35px;
+	right: 50px;
+}
+.head .tile{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	margin-left: 5px;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+.head .tile.socialmedia{
+	color: #800000;
+	font-size: 50px;
+	text-align: center;
+	line-height: 50px;
+	position: relative;
+	top: -6px;
+}
+header.clicked .head .tile.socialmedia{
+	color: white;
+}
+
+.nav-modal{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	visibility: hidden;
+	opacity: 0;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	pointer-events: none;
+}
+</style>
+
+<head>
+
+	<!--Made with love by Mutiullah Samim -->
+	<!--Bootsrap 4 CDN-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<!--Custom styles-->
+	<link rel="stylesheet" type="text/css" href="styles.css"> </head>
+
+<body>
+
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<header>
+	<img  class="timlogo" src="\static\au3.png" alt="AU logo">
+	<div class="cnt">
+		<h1>SLOT BOOKING SYSTEM</h1>
+	</div>
+	<div class="head">
+		<a href="{% url 'admin_request' %}" class="tile socialmedia"><i class="fa fa-reply"></i></a>
+		 <a href='/' class="tile socialmedia"><i class="fa fa-sign-out"></i></a>
+	</div>
+</header>
+
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h3>Request</h3>
+				</div>
+				<div class="card-body">
+					<form method="post">
+						{% csrf_token %}
+
+						<!--<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fa fa-user"></i> </span> </div>
+							<input name="rUser" class="form-control" placeholder="UserName" type="text"> </div>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-code-branch"></i> </span> </div>
+							<input name="rEvent" class="form-control" placeholder="Eventid" type="text"> </div>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-list"></i> </span> </div>
+							<input name="rRoom" class="form-control" placeholder="roomno" type="text"> </div>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-hourglass"></i> </span> </div>
+							<input name="rSlot" class="form-control" placeholder="Timing" type="text"> </div>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-calendar"></i> </span> </div>
+							<input name="rDate" class="form-control" placeholder="YYYY-MM-DD" type="text"> </div>-->
+
+						<!--<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fa fa-envelope"></i> </span> </div>
+							<input name="reqId" class="form-control" placeholder="RequestId" type="text"> </div>-->
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-highlighter"></i> </span> </div>
+							<select name="reqStatus" class="form-control">
+								<option selected=""> Select</option>
+								<option>Accepted</option>
+								<option>Declined</option>
+							</select>
+						</div>
+
+						<div class="form-group input-group">
+							<div class="input-group-prepend"> <span class="input-group-text"> <i class="fas fa-file-alt"></i> </span> </div>
+							<input name="fbDesc" class="form-control" placeholder="Any Feedback" type="text"> </div>
+
+						<div class="form-group">
+							<button type="submit" class="btn float-right login_btn"> Modify Request </button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
